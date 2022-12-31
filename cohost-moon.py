@@ -3,9 +3,8 @@ import pylunar
 from cohost.models.user import User
 from cohost.models.block import MarkdownBlock
 
-# obfuscate
-cookie = 'im foolish but not enough to publish my login cookie'
-user = User.loginWithCookie(cookie)
+user = User.login("lmao@no.way"
+                , "hunter2")
 
 def phase():
     mi = pylunar.MoonInfo((42, 21, 30), (-71, 3, 35))
