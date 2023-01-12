@@ -1,5 +1,3 @@
-import pylunar
-
 from cohost.models.user import User
 from cohost.models.block import MarkdownBlock
 
@@ -7,19 +5,18 @@ import random
 
 import string # for string.Formatter
 
-def phase():
-    mi = pylunar.MoonInfo((42, 21, 30), (-71, 3, 35))
-    return mi.phase_name().lower().replace('_', ' ')
+from moonphase import phase
+import cohost_login
 
-user = User.login("lmao@no.way"
-                , "hunter2")
-
-project = user.getProject('themoon')
+project = cohost_login.login().getProject('themoon')
 title = f'the moon is now {phase()}'
 
 lastTitle = project.getPosts()[0].headline
 
-if title == lastTitle:
+# print(f'last retrieved title is {lastTitle}')
+
+if title == lastTitle or title == '':
+    print('TITLE ALREADY FOUND! ({})')
     quit()
 
 random.seed()
@@ -81,13 +78,16 @@ def message():
 
 tags = [ ]
 
-markdown = ''
+markdown = message()
+
+markdown = ""
 
 blocks = [
     MarkdownBlock(markdown)
 ]
 
-quit()
+print(title)
+print(markdown)
 
 project.post(title, blocks, tags=tags)
 
