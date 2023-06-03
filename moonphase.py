@@ -1,5 +1,4 @@
 from spiceypy import spiceypy
-print('\t' + spiceypy.tkvrsn('TOOLKIT'))
 
 import time # for epoch time
 
