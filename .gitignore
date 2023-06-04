@@ -153,3 +153,9 @@ cython_debug/
 
 # SPK
 *.bsp
+
+# pycharm cruft
+.idea/
+
+# text
+*.txt
